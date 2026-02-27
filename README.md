@@ -46,5 +46,5 @@ fh-hitl-bo/
 ## Temperature Units
 Temperature is represented in degrees Celsius within the surrogate modeling framework. For thermodynamic calculations of the Flory-Huggins free energy (used in the prior mean formulation), temperature is converted to Kelvin, consistent with the standard form of the Flory-Huggins free energy equation. This unit conversion is automatic and internal, so no unit-selection flag is exposed to users. 
 
-## Additional Note: 
+## Additional Note
 The results in the manuscript were generated without enforcing a fixed random seed. An optional NumPy seed (np_RNG_seed) is used in the notebooks to enable deterministic behavior for reproducibility and debugging. 
