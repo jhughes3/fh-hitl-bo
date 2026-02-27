@@ -1,0 +1,7 @@
+gpcam==8.1.9
+matplotlib
+tqdm
+pandas
+opencv-python
+dill
+openpyxl

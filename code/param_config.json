@@ -1,0 +1,77 @@
+{
+    "general_parameters": {
+        "np_RNG_seed": 42,
+        "parameter_bounds":{
+            "composition": [0.0, 1.0], 
+            "temperature_C": [150.0, 200.0]
+        },
+        "hyperparameters": {
+            "Noise": {"init": 1e-1, "bounds": [1e-2, 1e2]},
+            "lx": {"init": 1e-2, "bounds": [1e-3, 1]},
+            "lT": {"init": 1, "bounds": [1e-1, 1e2]},
+            "A": {"init": 0, "bounds": [-1, 1]},
+            "B": {"init": 0, "bounds": [-200, 200]}
+            
+        },
+        "n_points_per_iteration": 5,
+        "a_value_noise": 0.05,
+        "floor_noise": 1e-6,
+        "rounding_precision":{
+            "composition": 3,
+            "temperature_C": 1
+        },
+        "immiscibility_sharpness": 2e23
+    },
+    "experimental_parameters": {
+        "material_parameters": {
+            "PMMA":{
+                "degree_of_polymerization": 843.987
+            },
+            "SAN":{
+                "degree_of_polymerization": 665.375
+            }
+        },
+        "boundary_convergence_testing":{
+            "boundary_convergence_threshold": 0.1,
+            "boundary_convergence_window": 5,
+            "boundary_log_smoothing_window": 10,
+            "boundary_gaussian_blur": 1,
+            "boundary_point_gen_resolution": 200
+        },
+        "new_point_generation": {
+            "rounding_precision":{
+                "composition": 10,
+                "temperature_C": 0
+            },
+            "N_acquisition_points": 200,
+            "sample_volume_uL": 60,
+            "volume_rounding_precision": 1
+        },
+        "cloudiness_params":{
+            "p": 0.225,
+            "h": 0.015,
+            "k": 80
+        }
+    },
+    "simulation_parameters": {
+        "N_campaigns": 4,
+        "N_window_HPs": 5,
+        "max_iterations": 100,
+        "tol_HP_convergence": 0.01,
+        "initial_xT_values": [[0.0, 150.0], [1.0, 150.0], [0.0, 200.0], [1.0, 200.0]],
+        "models":{
+            "Zero-mean": {
+                "active_hyperparameters": ["Noise", "lx", "lT"]
+            },
+            "Flory-Huggins": {
+                "active_hyperparameters": ["Noise", "lx", "lT", "A", "B"]
+            },
+            "Physics-Elsewhere": {
+                "active_hyperparameters": ["Noise", "lx", "lT"],
+                "additional_hyperparameter":{
+                    "lchi": {"init": 1e-3, "bounds": [1e-6, 1e-1]} 
+                }
+            }
+        }
+    }
+}
